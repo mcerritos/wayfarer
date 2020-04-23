@@ -33,9 +33,6 @@ class App extends Component {
             <>
                 <Navigation currentUser={this.state.currentUser} logout={this.logout}/>
                 <div className="container">
-                    <div>
-
-                    </div>
                     <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
                 </div>
             </>
