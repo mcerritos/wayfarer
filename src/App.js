@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import React, { Component, useState } from 'react';
 import Routes from './config/routes'
 import Navigation from './components/Navigation'
-
+import UserModel from './models/user';
+import { withRouter } from 'react-router-dom'
 
 class App extends Component {
     
@@ -31,9 +31,12 @@ class App extends Component {
     render() {
         return (
             <>
-                <Navigation />
+                <Navigation currentUser={this.state.currentUser} logout={this.logout}/>
                 <div className="container">
-                    <Routes />
+                    <div>
+
+                    </div>
+                    <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
                 </div>
             </>
         );
