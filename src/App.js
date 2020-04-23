@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import Routes from './config/routes'
+import Navigation from './components/Navigation'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+    
+    state = {
+        currentUser: localStorage.getItem('uid')
+    }
+
+    setCurrentUser = (userId) => {
+        this.setState({ currentUser: userId })
+        localStorage.setItem('uid', userId)
+    }
+
+    logout = (event) => {
+        event.preventDefault();
+
+        localStorage.removeItem('uid');
+        UserModel.logout()
+            .then(res => {
+                console.log(res)
+                this.setState({ currentUser: null })
+                this.props.history.push('/')
+            })
+            .catch(err => console.log(err))
+    }
+
+    render() {
+        return (
+            <>
+                <Navigation />
+                <div className="container">
+                    <Routes />
+                </div>
+            </>
+        );
+    }
 }
 
-export default App;
+export default withRouter(App);
