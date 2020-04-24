@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Profile from './Profile.js'
+import UserModel from '../models/UserModel.js'
 
 export default class ProfileContainer extends Component {
     constructor() {
         super();
         this.state = {
             name: "",
-            city: ""
+            city: "",
             posts: []
         };
     };
