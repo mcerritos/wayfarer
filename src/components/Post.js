@@ -8,4 +8,4 @@ export default function Post() {
     )
 }
 
-export default Post;
+
