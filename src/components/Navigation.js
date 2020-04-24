@@ -41,7 +41,8 @@ const Navigation = (props) => {
                     }
                 </Nav>
                 </Collapse>
-                <LoginModal toggle={toggleModal} toggleState={modal}/>
+                <LoginModal currentUser={props.currentUser} setCurrentUser={props.setCurrentUser}
+                 toggle={toggleModal} toggleState={modal}/>
             </Navbar>
         );
 }

@@ -31,9 +31,9 @@ class App extends Component {
     render() {
         return (
             <>
-                <Navigation currentUser={this.state.currentUser} logout={this.logout}/>
+                <Navigation setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser} logout={this.logout}/>
                 <div className="container">
-                    <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+                <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
                 </div>
             </>
         );
