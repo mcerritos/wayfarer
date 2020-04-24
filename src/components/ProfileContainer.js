@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Profile from './Profile.js'
-import UserModel from '../models/UserModel.js'
+import UserModel from '../models/user.js'
 
 export default class ProfileContainer extends Component {
     constructor() {
@@ -12,38 +12,41 @@ export default class ProfileContainer extends Component {
         };
     };
 
-    // get the user's posts when the posts load
-    componentDidMount() {
-        this.fetchData();
-    };
+    // // get the user's posts when the posts load
+    // componentDidMount() {
+    //     this.fetchData();
+    // };
 
     // get the users posts
-    fetchData = () => {
-        PostModel.all().then((res) => {
-            this.setState ({
-            posts: res.data.posts,
-            });
-        });
-    };
+    // fetchData = () => {
+    //     PostModel.all().then((res) => {
+    //         this.setState ({
+    //         posts: res.data.posts,
+    //         });
+    //     });
+    // };
 
     // not sure how to update my user 
-    updateUser = (user) => {
-        const isUpdatedUser = u => {
-            return u._id === user._id;
-        };
+//     updateUser = (user) => {
+//         const isUpdatedUser = u => {
+//             return u._id === user._id;
+//         };
 
-        // uses a static method to call the database and change the user info
-        UserModel.update(user)
-        .then((res) => {
-          let name = this.state.name;
-          let city = this.state.city;
-          users.find(isUpdatedUser).name = user.name;
-          users.find(isUpdatedUser).city = user.city;
-          this.setState({ user: user });
-        });
-  };
+//         // uses a static method to call the database and change the user info
+//         UserModel.update(user)
+//         .then((res) => {
+//           let name = this.state.name;
+//           let city = this.state.city;
+//           users.find(isUpdatedUser).name = user.name;
+//           users.find(isUpdatedUser).city = user.city;
+//           this.setState({ user: user });
+//         });
+//   };
   
     render() {
+        UserModel.user(this.props.currentUser).then((res) => {
+            console.log(res);
+        })
         return (
             <div>
                 <Profile posts={this.state.posts}/>
@@ -52,4 +55,4 @@ export default class ProfileContainer extends Component {
     }
 }
 
-export default ProfileContainer;
+
