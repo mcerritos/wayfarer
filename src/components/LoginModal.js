@@ -20,8 +20,6 @@ class LoginModal extends Component {
         UserModel.login(this.state)
           .then((res) => {
             this.props.setCurrentUser(res.data.data)
-            //this.props.setdbId(res.data._id)
-            //const returnedId = this.props.getdbId()
             const returnedId = this.props.getCurrentUser()
             console.log(`This is the current dbid ${returnedId} `)
           })

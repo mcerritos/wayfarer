@@ -48,10 +48,10 @@ const Navigation = (props) => {
                 </Collapse>
 
                 <LoginModal currentUser={props.currentUser} getCurrentUser={props.getCurrentUser} setCurrentUser={props.setCurrentUser}
-                 toggle={toggleModal} toggleState={modal} setdbId={props.setdbId} getdbId={props.getdbId}/>
+                 toggle={toggleModal} toggleState={modal} />
 
                  <Register  currentUser={props.currentUser} getCurrentUser={props.getCurrentUser} setCurrentUser={props.setCurrentUser}
-                 toggle={toggleRegisterModal} toggleState={registerModal} setdbId={props.getdbId}/>
+                 toggle={toggleRegisterModal} toggleState={registerModal} />
             </Navbar>
         );
 }

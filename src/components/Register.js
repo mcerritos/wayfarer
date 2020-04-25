@@ -30,11 +30,7 @@ class Register extends Component {
     // make an axios call to the API register route
     UserModel.create(this.state)
       .then(res => {
-        this.props.setdbId(res.data._id)
-        this.setState({
-          name: res.data.name,
-          email: res.data.email,
-        })
+        this.props.setCurrentUser(res.data.data._id)
       })
       .catch(err => console.log(err))
   }

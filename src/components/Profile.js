@@ -7,7 +7,6 @@ import { Card, CardImg, CardText, CardBody,
 class Profile extends Component {
     render() {
        
-
         return (
             <div>
                 <Card>

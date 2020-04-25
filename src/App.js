@@ -20,14 +20,6 @@ class App extends Component {
         return this.state.currentUser
     }
 
-    setdbId = (databaseId) => {
-        this.setState({ dbId: databaseId })
-    }
-
-    getdbId = () => {
-        return this.state.dbId
-    }
-
     logout = (event) => {
         event.preventDefault();
 
@@ -46,10 +38,10 @@ class App extends Component {
         return (
             <>
                 <Navigation setCurrentUser={this.setCurrentUser} getCurrentUser={this.getCurrentUser} currentUser={this.state.currentUser}
-                 logout={this.logout} setdbId={this.setdbId} getdbId={this.getdbId}/>
+                 logout={this.logout} />
                 <div className="container">
                 <Routes currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} setCurrentUser={this.setCurrentUser} 
-                setdbId={this.setdbId} getdbId={this.getdbId}/>
+                />
                 </div>
             </>
         );
