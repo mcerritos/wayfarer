@@ -7,12 +7,25 @@ import { withRouter } from 'react-router-dom'
 class App extends Component {
     
     state = {
-        currentUser: localStorage.getItem('uid')
+        currentUser: localStorage.getItem('uid'),
+        dbId : "1"
     }
 
     setCurrentUser = (userId) => {
         this.setState({ currentUser: userId })
         localStorage.setItem('uid', userId)
+    }
+
+    getCurrentUser = (userId) => {
+        return this.state.currentUser
+    }
+
+    setdbId = (databaseId) => {
+        this.setState({ dbId: databaseId })
+    }
+
+    getdbId = () => {
+        return this.state.dbId
     }
 
     logout = (event) => {
@@ -23,6 +36,7 @@ class App extends Component {
             .then(res => {
                 console.log(res)
                 this.setState({ currentUser: null })
+                this.setState({ dbId: "" })
                 this.props.history.push('/')
             })
             .catch(err => console.log(err))
@@ -31,9 +45,11 @@ class App extends Component {
     render() {
         return (
             <>
-                <Navigation setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser} logout={this.logout}/>
+                <Navigation setCurrentUser={this.setCurrentUser} getCurrentUser={this.getCurrentUser} currentUser={this.state.currentUser}
+                 logout={this.logout} setdbId={this.setdbId} getdbId={this.getdbId}/>
                 <div className="container">
-                <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+                <Routes currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} setCurrentUser={this.setCurrentUser} 
+                setdbId={this.setdbId} getdbId={this.getdbId}/>
                 </div>
             </>
         );
