@@ -8,11 +8,32 @@ export default class ProfileContainer extends Component {
         this.state = {
             name: "",
             city: "",
-            posts: []
+            posts: [],
+            id: ""
         };
     };
 
-    // // get the user's posts when the posts load
+    componentDidMount() {
+        let dbid = this.props.getCurrentUser()
+            UserModel.user(dbid).then((res) => {
+                console.log(res);
+                this.setState({
+                    name : res.data.data.name,
+                })
+            }) 
+            .catch((err) => {console.log(err)})
+        };
+ 
+    render() {
+        return (
+            <div>
+                <Profile name={this.state.name} posts={this.state.posts}/>
+            </div>
+        )
+    }
+}
+
+ // // get the user's posts when the posts load
     // componentDidMount() {
     //     this.fetchData();
     // };
@@ -42,17 +63,5 @@ export default class ProfileContainer extends Component {
 //           this.setState({ user: user });
 //         });
 //   };
-  
-    render() {
-        UserModel.user(this.props.currentUser).then((res) => {
-            console.log(res);
-        })
-        return (
-            <div>
-                <Profile posts={this.state.posts}/>
-            </div>
-        )
-    }
-}
 
 

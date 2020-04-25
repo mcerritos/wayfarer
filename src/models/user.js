@@ -22,7 +22,9 @@ export default class UserModel {
         return request
     }
     static user = (data) => {
-        let request = axios.get(`${REACT_APP_API_URL}/user/${data}`, data);
+        let request = axios.get(`${REACT_APP_API_URL}/users/${data}`, {
+            withCredentials: true
+        });
         return request;
     };
 };

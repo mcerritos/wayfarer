@@ -19,8 +19,9 @@ class LoginModal extends Component {
         event.preventDefault()
         UserModel.login(this.state)
           .then((res) => {
-            this.props.setCurrentUser(res.data)
-            this.props.history.push('/')
+            this.props.setCurrentUser(res.data.data)
+            const returnedId = this.props.getCurrentUser()
+            console.log(`This is the current dbid ${returnedId} `)
           })
           .catch((err) => console.log(err))
       }
@@ -46,7 +47,7 @@ class LoginModal extends Component {
                                 <input onChange={this.handleChange} className="form-control form-control-lg" 
                                 type="password" id="password" name="password" value={this.state.password} />
                             </div>
-                            <button className="btn btn-primary float-right" type="submit">Login</button>
+                            <button className="btn btn-primary float-right" type="submit" onClick={this.props.toggle}>Login</button>
                             </form>
                         </div>
                         </div>

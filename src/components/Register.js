@@ -10,7 +10,8 @@ class Register extends Component {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
+    uid:''
   }
 
   // handles changes made to the form fields: handleChange()
@@ -29,12 +30,7 @@ class Register extends Component {
     // make an axios call to the API register route
     UserModel.create(this.state)
       .then(res => {
-        this.setState({
-          name: '',
-          email: '',
-          password: '',
-          password2: ''
-        })
+        this.props.setCurrentUser(res.data.data._id)
       })
       .catch(err => console.log(err))
   }

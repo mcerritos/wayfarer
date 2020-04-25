@@ -37,21 +37,21 @@ const Navigation = (props) => {
                         :
                         <>
                             <NavItem>
-                                <NavLink onClick={toggleRegisterModal}>Register</NavLink>
+                                <NavLink onClick={toggleRegisterModal} >Register</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink onClick={toggleModal}>Login</NavLink>
+                                <NavLink onClick={toggleModal} >Login</NavLink>
                             </NavItem>
                         </>
                     }
                 </Nav>
                 </Collapse>
 
-                <LoginModal currentUser={props.currentUser} setCurrentUser={props.setCurrentUser}
-                 toggle={toggleModal} toggleState={modal}/>
+                <LoginModal currentUser={props.currentUser} getCurrentUser={props.getCurrentUser} setCurrentUser={props.setCurrentUser}
+                 toggle={toggleModal} toggleState={modal} />
 
-                 <Register  currentUser={props.currentUser} setCurrentUser={props.setCurrentUser}
-                 toggle={toggleRegisterModal} toggleState={registerModal}/>
+                 <Register  currentUser={props.currentUser} getCurrentUser={props.getCurrentUser} setCurrentUser={props.setCurrentUser}
+                 toggle={toggleRegisterModal} toggleState={registerModal} />
             </Navbar>
         );
 }
