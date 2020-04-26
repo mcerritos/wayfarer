@@ -8,7 +8,7 @@ const PostModal = (props) => {
             <Modal centered={true} isOpen={props.toggleState} toggle={props.toggle}>
                 <ModalHeader toggle={props.toggle}>Login</ModalHeader>
                 <ModalBody>
-                    Login form stuff
+                    Create a post stuff
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={props.toggle}>Submit</Button>
