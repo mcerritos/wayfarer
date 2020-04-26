@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarToggler} from 'reactstrap';
 
 import LoginModal from './LoginModal.js';
+import Register from './Register'
 
 const Navigation = (props) => {
 
         const [isOpen, setIsOpen] = useState(false);
         const toggleNav = () => setIsOpen(!isOpen);
 
+        // variable that stores modal state
         const [modal, setModal] = useState(false);
         const toggleModal = () => setModal(!modal);
+
+        const [registerModal, setRegisterModal] = useState(false);
+        const toggleRegisterModal = () => setRegisterModal(!registerModal);
 
         return ( 
             <Navbar color="light" light expand="md">
@@ -32,16 +37,21 @@ const Navigation = (props) => {
                         :
                         <>
                             <NavItem>
-                                <NavLink href="/register">Register</NavLink>
+                                <NavLink onClick={toggleRegisterModal} >Register</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink onClick={toggleModal}>Login</NavLink>
+                                <NavLink onClick={toggleModal} >Login</NavLink>
                             </NavItem>
                         </>
                     }
                 </Nav>
                 </Collapse>
-                <LoginModal toggle={toggleModal} toggleState={modal}/>
+
+                <LoginModal currentUser={props.currentUser} getCurrentUser={props.getCurrentUser} setCurrentUser={props.setCurrentUser}
+                 toggle={toggleModal} toggleState={modal} />
+
+                 <Register  currentUser={props.currentUser} getCurrentUser={props.getCurrentUser} setCurrentUser={props.setCurrentUser}
+                 toggle={toggleRegisterModal} toggleState={registerModal} />
             </Navbar>
         );
 }
