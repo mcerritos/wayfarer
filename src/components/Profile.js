@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Post from './Post.js'
 import { Card, CardImg, CardText, CardBody,
           CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Redirect } from "react-router-dom";
 
 
 class Profile extends Component {
+
     render() {
        
         return (
