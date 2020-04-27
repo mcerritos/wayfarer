@@ -5,6 +5,7 @@ class ProfileForm extends Component {
     super();
     this.state = {
       name: '',
+      city:''
     };
   };
 
@@ -13,15 +14,14 @@ class ProfileForm extends Component {
     this.setState({
         [event.target.name]: event.target.value
       })
-    console.log(this.state.name);
   }
 
   //takes component state and sends it to the update function
   onSubmit = (event) => {
     event.preventDefault();
-    const name = String(this.state.name);
-    this.props.updateProfile(name);
-    this.setState({ name: '' });
+    const name = this.state.name;
+    const city = this.state.city;
+    this.props.updateProfile(name, city);
     this.props.toggleBodyForm();
   };
 
@@ -32,6 +32,12 @@ class ProfileForm extends Component {
         <label> Name: </label>
           <input
             name="name" 
+            autoFocus={this.props.autoFocus}
+            onChange={this.onChange}
+            type='text' /> 
+          <label> City: </label>
+          <input
+            name="city" 
             autoFocus={this.props.autoFocus}
             onChange={this.onChange}
             type='text' /> 
