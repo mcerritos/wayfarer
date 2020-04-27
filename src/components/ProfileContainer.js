@@ -16,7 +16,6 @@ export default class ProfileContainer extends Component {
 
     updateProfile = (_name, _city) => {
         console.log(_name, _city)
-        console.log("Update profile has been called!")
         let dbid = this.props.getCurrentUser();
         // uses a static method to call the database and change the user info
         UserModel.update(dbid, _name, _city)
@@ -50,20 +49,5 @@ export default class ProfileContainer extends Component {
         )
     }
 }
-
- // // get the user's posts when the posts load
-    // componentDidMount() {
-    //     this.fetchData();
-    // };
-
-    // get the users posts
-    // fetchData = () => {
-    //     PostModel.all().then((res) => {
-    //         this.setState ({
-    //         posts: res.data.posts,
-    //         });
-    //     });
-    // };
-;
 
 
