@@ -56,6 +56,7 @@ export default class Post extends Component {
                                 <label htmlFor="name">Content</label>
                                 <input onChange={this.handleChange} className="form-control form-control-lg" type="content" id="content" name="content" value={this.state.content} />
                             </div>
+                            <button className="btn btn-primary float-right" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>

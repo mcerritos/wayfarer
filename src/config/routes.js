@@ -42,7 +42,6 @@ export default (props) => (
       <Route path="/posts" render={ (routeProps) => {
       return <Post 
                 { ...routeProps }
-                getdbId={this.getdbId}
                 currentUser={props.currentUser}
               /> 
     } } />
