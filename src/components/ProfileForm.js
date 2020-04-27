@@ -12,14 +12,14 @@ class ProfileForm extends Component {
   onChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
-      });
+      })
     console.log(this.state.name);
-  };
+  }
 
   //takes component state and sends it to the update function
   onSubmit = (event) => {
     event.preventDefault();
-    const name = this.state.name;
+    const name = String(this.state.name);
     this.props.updateProfile(name);
     this.setState({ name: '' });
     this.props.toggleBodyForm();
@@ -31,9 +31,9 @@ class ProfileForm extends Component {
         <form onSubmit={ this.onSubmit }>
         <label> Name: </label>
           <input
-            id="name"
+            name="name" 
             autoFocus={this.props.autoFocus}
-            onChange={ this.onChange }
+            onChange={this.onChange}
             type='text' /> 
           <button type='submit'>Save</button>
         </form>
