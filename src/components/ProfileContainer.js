@@ -13,6 +13,19 @@ export default class ProfileContainer extends Component {
         };
     };
 
+    updateProfile = (_name) => {
+        console.log(_name)
+        console.log("Update profile has been called!")
+        let dbid = this.props.getCurrentUser();
+        // uses a static method to call the database and change the user info
+        UserModel.update(dbid, _name)
+        .then((res) => {
+            this.setState({
+                name : _name,
+            })
+        }).catch((err) => {console.log(err)});
+  }
+
     componentDidMount() {
         let dbid = this.props.getCurrentUser()
             UserModel.user(dbid).then((res) => {
@@ -27,7 +40,8 @@ export default class ProfileContainer extends Component {
     render() {
         return (
             <div>
-                <Profile name={this.state.name} posts={this.state.posts}/>
+                <Profile name={this.state.name} posts={this.state.posts} 
+                updateProfile={this.updateProfile} />
             </div>
         )
     }
@@ -46,22 +60,6 @@ export default class ProfileContainer extends Component {
     //         });
     //     });
     // };
-
-    // not sure how to update my user 
-//     updateUser = (user) => {
-//         const isUpdatedUser = u => {
-//             return u._id === user._id;
-//         };
-
-//         // uses a static method to call the database and change the user info
-//         UserModel.update(user)
-//         .then((res) => {
-//           let name = this.state.name;
-//           let city = this.state.city;
-//           users.find(isUpdatedUser).name = user.name;
-//           users.find(isUpdatedUser).city = user.city;
-//           this.setState({ user: user });
-//         });
-//   };
+;
 
 
