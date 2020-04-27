@@ -8,6 +8,7 @@ export default class ProfileContainer extends Component {
         this.state = {
             name: "",
             city: "",
+            date: Date.now,
             posts: [],
             id: ""
         };
@@ -34,6 +35,7 @@ export default class ProfileContainer extends Component {
                 this.setState({
                     name : res.data.data.name,
                     city: res.data.data.city,
+                    date: res.data.data.dateJoined
                 })
             }) 
             .catch((err) => {console.log(err)})
@@ -42,7 +44,7 @@ export default class ProfileContainer extends Component {
     render() {
         return (
             <div>
-                <Profile name={this.state.name} city={this.state.city} posts={this.state.posts} 
+                <Profile name={this.state.name} city={this.state.city} date={this.state.date} posts={this.state.posts} 
                 updateProfile={this.updateProfile} />
             </div>
         )

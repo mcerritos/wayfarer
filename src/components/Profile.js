@@ -29,7 +29,8 @@ class Profile extends Component {
                   {/* <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" /> */}
                   <CardBody>
                     <CardTitle>Welcome to your profile, {this.props.name} !</CardTitle>
-                    <CardText>Your current city is {this.props.city}</CardText>
+                    <CardText>Your current city is {this.props.city}.</CardText>
+                    <CardText>You joined on {this.props.date}.</CardText>
                   </CardBody>
                   <span className='edit' onClick={this.toggleBodyForm}>Edit your profile?</span>
                 </Card>

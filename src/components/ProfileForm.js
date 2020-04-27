@@ -14,7 +14,6 @@ class ProfileForm extends Component {
     this.setState({
         [event.target.name]: event.target.value
       })
-    console.log(this.state.name);
   }
 
   //takes component state and sends it to the update function
@@ -23,7 +22,6 @@ class ProfileForm extends Component {
     const name = this.state.name;
     const city = this.state.city;
     this.props.updateProfile(name, city);
-    this.setState({ name: '', city: '' });
     this.props.toggleBodyForm();
   };
 
