@@ -5,8 +5,8 @@ import UserModel from '../models/user.js'
 
 
 export default class ProfileContainer extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: "",
             city: "",

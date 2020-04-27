@@ -5,6 +5,7 @@ import Cities from '../components/Cities.js';
 import Register from '../components/Register.js';
 import LoginModal from '../components/LoginModal.js';
 import ProfileContainer from '../components/ProfileContainer.js';
+import Post from '../components/Post.js';
 
 
 export default (props) => (
@@ -35,6 +36,13 @@ export default (props) => (
                 getdbId={this.getdbId}
                 currentUser={props.currentUser}
                 setCurrentUser={props.setCurrentUser}
+              /> 
+    } } />
+
+      <Route path="/posts" render={ (routeProps) => {
+      return <Post 
+                { ...routeProps }
+                currentUser={props.currentUser}
               /> 
     } } />
     
