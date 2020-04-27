@@ -5,7 +5,7 @@ import Cities from '../components/Cities.js';
 import Register from '../components/Register.js';
 import LoginModal from '../components/LoginModal.js';
 import ProfileContainer from '../components/ProfileContainer.js';
-import Post from '../components/Post.js';
+import PostForm from '../components/PostForm.js';
 
 
 export default (props) => (
@@ -40,7 +40,7 @@ export default (props) => (
     } } />
 
       <Route path="/posts" render={ (routeProps) => {
-      return <Post 
+      return <PostForm 
                 { ...routeProps }
                 currentUser={props.currentUser}
               /> 

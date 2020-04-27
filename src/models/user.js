@@ -32,7 +32,7 @@ export default class UserModel {
         let request = axios.put(`${REACT_APP_API_URL}/users/update/${user}`,
          {"name" : `"${nametochange}"`, "city" : `"${citytochange}"` } );
         return request;
-      };
+    };
 };
 
 // something weird is happening here
