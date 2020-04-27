@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Profile from './Profile.js'
 import UserModel from '../models/user.js'
+import PostModel from '../models/posts.js'
 
 
 
@@ -30,12 +31,25 @@ export default class ProfileContainer extends Component {
 
     componentDidMount() {
         let dbid = this.props.getCurrentUser()
+
             UserModel.user(dbid).then((res) => {
                 console.log(res);
                 this.setState({
                     name : res.data.data.name,
+                    city: res.data.data.city
                 })
             }) 
+            .catch((err) => {console.log(err)})
+        
+        PostModel.all(dbid)
+            .then((res) => {
+
+                console.log(res.data);
+
+                this.setState({
+                    posts: res.data
+                })
+            })
             .catch((err) => {console.log(err)})
         };
  
