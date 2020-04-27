@@ -4,7 +4,7 @@ const REACT_APP_API_URL = "http://localhost:3000/api/v1";
 
 class PostModel {
     static all = (userId) => {
-      let request = axios.get(REACT_APP_API_URL/`${userId}`);
+      let request = axios.get(`${REACT_APP_API_URL}/posts/${userId}`);
       return request;
     };
   

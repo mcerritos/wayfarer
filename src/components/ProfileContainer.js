@@ -30,6 +30,7 @@ export default class ProfileContainer extends Component {
   }
 
     componentDidMount() {
+
         let dbid = this.props.getCurrentUser()
 
             UserModel.user(dbid).then((res) => {
