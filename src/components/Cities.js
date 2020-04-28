@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, CardBody, CardText, CardTitle, Button } from 'reactstrap';
 import '../styles/cities.css';
 import CityModel from '../models/cities.js';
@@ -26,8 +27,6 @@ class Cities extends Component {
         };
     }
   
-
-    
     componentDidMount() {
         CityModel.all()
         .then((res) => {
@@ -58,8 +57,11 @@ class Cities extends Component {
 
         PostModel.getCityPosts(event.target.id)
             .then((res) => {
-                console.log('stuff')
-                console.log(res.data);
+                let selectedCityCopy = JSON.parse(JSON.stringify(this.state.selectedCity))
+                selectedCityCopy.posts = res.data
+                this.setState({
+                    selectedCity: selectedCityCopy
+                })
             })
             .catch((err) => (console.log(err)))
     }
@@ -67,7 +69,7 @@ class Cities extends Component {
     toggleModal = () => {
         let evilstate = !this.state.modal
         this.setState({
-        modal : evilstate
+            modal : evilstate
         })
     }
 
@@ -76,6 +78,28 @@ class Cities extends Component {
             <CityListItem key={key} handleClick={this.chooseCity} name={city.name} cityId={city._id} img={city.picture} />
         );
         return list;
+    }
+
+    createPostList() {
+
+        if (this.state.selectedCity.posts == undefined) {
+            return;
+        } else {
+            let list = this.state.selectedCity.posts.map((post) =>
+            <>
+                <Card id={post._id}>
+                    <CardBody>
+                        <CardTitle> <h4>{post.title}</h4> </CardTitle>
+                        <CardText> {post.content} </CardText>
+                        <Link to={`/post/${post._id}`}>See More?</Link>
+                    </CardBody>
+                </Card>
+                <br />
+            </>
+            );
+    
+            return list;
+        }
     }
 
     render() { 
@@ -91,7 +115,7 @@ class Cities extends Component {
                     </Col>
                     <Col className="city-col" md="8">
                         {this.state.cityPicked ?
-                            <CityDetail toggleModal={this.toggleModal} name={this.state.selectedCity.name} src={this.state.selectedCity.img}/>
+                            <CityDetail cityPosts={this.createPostList()} toggleModal={this.toggleModal} name={this.state.selectedCity.name} src={this.state.selectedCity.img}/>
                         :
                             <div></div>
                         }
