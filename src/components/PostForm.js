@@ -27,7 +27,8 @@ export default class PostForm extends Component {
         let newPost = {
             title: this.state.title,
             author: this.props.userId,
-            content: this.state.content
+            content: this.state.content,
+            city: this.props.cityid
         }
 
         console.log(newPost);

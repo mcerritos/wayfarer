@@ -1,8 +1,9 @@
 import React, { Component} from 'react';
 import { Container, Row, Col, Card, CardBody, CardText, CardTitle, Button } from 'reactstrap';
 import '../styles/cities.css';
-import CityModel from '../models/cities.js'
-import PostModal from './PostModal.js'
+import CityModel from '../models/cities.js';
+import PostModel from '../models/posts.js';
+import PostModal from './PostModal.js';
 
 
 
@@ -14,8 +15,8 @@ class Cities extends Component {
         super(props);
         this.state = {
             cities: [],
-            selectedCity: "",
             modal: false,
+            cityPicked: false,
             selectedCity: {
                 id: "",
                 name: "",
@@ -34,46 +35,50 @@ class Cities extends Component {
                 cities: res.data
             })
         })
-}
+    }
 
-chooseCity = (event) => {
-    console.log(event.target.id)
-    this.setState({
-        selectedCity: event.target.id
-    });
+    chooseCity = (event) => {
+        this.setState({
+            selectedCity: event.target.id
+        });
 
-    CityModel.getCity(event.target.id)
-        .then((res) => {
-            this.setState({
-                selectedCity: {
-                    id: res.data._id,
-                    name: res.data.name,
-                    img: res.data.picture,
-                    posts: res.data.linkedPosts
-                }
+        CityModel.getCity(event.target.id)
+            .then((res) => {
+                this.setState({
+                    selectedCity: {
+                        id: res.data._id,
+                        name: res.data.name,
+                        img: res.data.picture,
+                        posts: res.data.linkedPosts
+                    },
+                    cityPicked: true
+                })
             })
-        }).catch((err) => (console.log(err))
-        )}
+            .catch((err) => (console.log(err)))
 
-toggleModal = () => {
-    console.log("Uh, hit me.")
-    let evilstate = !this.state.modal
-    this.setState({
-    modal : evilstate
-    })
-}
+        PostModel.getCityPosts(event.target.id)
+            .then((res) => {
+                console.log('stuff')
+                console.log(res.data);
+            })
+            .catch((err) => (console.log(err)))
+    }
 
-createCityList() {
-    let list = this.state.cities.map((city, key) =>
-        <CityListItem key={key} handleClick={this.chooseCity} name={city.name} cityId={city._id} img={city.picture} />
-    );
-    return list;
-}
+    toggleModal = () => {
+        let evilstate = !this.state.modal
+        this.setState({
+        modal : evilstate
+        })
+    }
+
+    createCityList() {
+        let list = this.state.cities.map((city, key) =>
+            <CityListItem key={key} handleClick={this.chooseCity} name={city.name} cityId={city._id} img={city.picture} />
+        );
+        return list;
+    }
+
     render() { 
-        //const toggleModal = () => setModal(!modal); this is how it worked in the other file
-
-        
-        
         return (
                 <Row>
                     <Col className="city-col" md="4">
@@ -85,12 +90,14 @@ createCityList() {
                         </Card>
                     </Col>
                     <Col className="city-col" md="8">
-                        <CityDetail toggleModal={this.toggleModal} name={this.state.selectedCity.name} src={this.state.selectedCity.img}/>
+                        {this.state.cityPicked ?
+                            <CityDetail toggleModal={this.toggleModal} name={this.state.selectedCity.name} src={this.state.selectedCity.img}/>
+                        :
+                            <div></div>
+                        }
                     </Col>
-                    <PostModal toggle={this.toggleModal} toggleState={this.state.modal} userId={this.props.currentUser}/>
+                    <PostModal cityid={this.state.selectedCity.id} toggle={this.toggleModal} toggleState={this.state.modal} userId={this.props.currentUser}/>
                 </Row>
-
-                
         );
     }
 }
