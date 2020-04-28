@@ -6,7 +6,7 @@ import Register from '../components/Register.js';
 import LoginModal from '../components/LoginModal.js';
 import ProfileContainer from '../components/ProfileContainer.js';
 import PostForm from '../components/PostForm.js';
-
+import PostShow from '../components/PostShow.js'
 
 export default (props) => (
     <Switch>
@@ -43,6 +43,14 @@ export default (props) => (
       return <PostForm 
                 { ...routeProps }
                 currentUser={props.currentUser}
+              /> 
+    } } />
+
+<Route path="/post/:id" render={ (routeProps) => {
+      return <PostShow 
+                { ...routeProps }
+                currentUser={props.currentUser}
+    
               /> 
     } } />
     
