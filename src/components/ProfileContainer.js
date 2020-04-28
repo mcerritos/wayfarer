@@ -60,21 +60,6 @@ export default class ProfileContainer extends Component {
             .catch((err) => {console.log(err)})
     };
 
-    // this calls the show post when the title is clicked on
-    // onPostClick = (event) => {
-    //     console.log("is this on???")
-    //     let dbid = this.props.getCurrentUser()
-    //     // pass props to redirect, but how??
-    //     return(
-    //         <Redirect to={{
-    //             pathname: '/post',
-    //             state: { postId: event.target.id, userId: dbid }
-    //         }}
-    //         />
-    //     )
-    // }
-
-    // this maps the post data to the info in state
     renderPostList() {
         let list = this.state.posts.map((post) =>
         <Card id={post._id} onClick={this.onPostClick}>

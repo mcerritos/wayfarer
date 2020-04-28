@@ -50,12 +50,3 @@ class Profile extends Component {
 
 export default Profile;
 
-
- // let posts = this.props.posts.map((post) => {
-        //     return (
-        //       <Post
-        //         key={postMessage._id}
-        //         // title={title}
-        //       />
-        //     );
-        //   });
