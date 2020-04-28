@@ -95,7 +95,6 @@ export default class ProfileContainer extends Component {
             <div>
                 <Profile name={this.state.name} city={this.state.city} date={this.state.date} posts={this.state.posts} 
                 updateProfile={this.updateProfile} />
-                <PostForm userId={this.state.id}/>
                 {this.renderPostList()} 
             </div>
         )

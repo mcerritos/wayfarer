@@ -29,7 +29,7 @@ export default class UserModel {
     };
 
     static update = (user, nametochange, citytochange) => {
-        let request = axios.put(`${REACT_APP_API_URL}/users/update/${user}`,
+        let request = axios.put(`${REACT_APP_API_URL}/user/update/${user}`,
          {"name" : `"${nametochange}"`, "city" : `"${citytochange}"` } );
         return request;
     };
