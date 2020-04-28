@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container, Row, Col, Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, CardText, CardTitle, Button } from 'reactstrap';
 import '../styles/citylistitem.css';
 
 class CityDetail extends Component {
@@ -16,7 +16,7 @@ class CityDetail extends Component {
                             <img className="detail-img" src={this.props.src} alt={this.props.name} />
                         </Row>
                         <br />
-                        <Button onclick={toggleModal}> Add Post</Button>
+                        <Button onClick={this.props.toggleModal}> + Add Post</Button>
                         <br />
                         <Row>
                             <Card>

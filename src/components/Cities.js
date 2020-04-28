@@ -36,15 +36,6 @@ class Cities extends Component {
         })
 }
 
-    
-   
-    
-
-
-
-
-
-
 chooseCity = (event) => {
     console.log(event.target.id)
     this.setState({
@@ -61,7 +52,15 @@ chooseCity = (event) => {
                     posts: res.data.linkedPosts
                 }
             })
-        })
+        }).catch((err) => (console.log(err))
+        )}
+
+toggleModal = () => {
+    console.log("Uh, hit me.")
+    let evilstate = !this.state.modal
+    this.setState({
+    modal : evilstate
+    })
 }
 
 createCityList() {
@@ -73,9 +72,7 @@ createCityList() {
     render() { 
         //const toggleModal = () => setModal(!modal); this is how it worked in the other file
 
-        const toggleModal = () => this.setState({
-            modal : !(this.modal)
-        })
+        
         
         return (
                 <Row>
@@ -88,9 +85,9 @@ createCityList() {
                         </Card>
                     </Col>
                     <Col className="city-col" md="8">
-                        <CityDetail toggle={toggleModal} name={this.state.selectedCity.name} src={this.state.selectedCity.img}/>
+                        <CityDetail toggleModal={this.toggleModal} name={this.state.selectedCity.name} src={this.state.selectedCity.img}/>
                     </Col>
-                    <PostModal toggle={toggleModal} toggleState={this.modal} userId={this.props.currentUser}/>
+                    <PostModal toggle={this.toggleModal} toggleState={this.state.modal} userId={this.props.currentUser}/>
                 </Row>
 
                 
