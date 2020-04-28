@@ -4,13 +4,15 @@ import PostForm from './PostForm'
 
 
 class PostModal extends Component {
+   
+    
     render() {
         return (
             <div>
                 <Modal centered={true} isOpen={this.props.toggleState} toggle={this.props.toggle}>
                     <ModalHeader toggle={this.props.toggle}>New Post</ModalHeader>
                     <ModalBody>
-                        <PostForm cityid={this.props.cityid} userId={this.props.userId}/>
+                        <PostForm toggle={this.props.toggle} userId={this.props.userId}/>
                     </ModalBody>
                 </Modal>
             </div>

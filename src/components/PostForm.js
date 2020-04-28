@@ -34,6 +34,7 @@ export default class PostForm extends Component {
         console.log(newPost);
 
         PostModel.create(newPost);
+        this.props.toggle()
     }
 
     render() {

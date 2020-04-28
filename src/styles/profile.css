@@ -1,7 +1,12 @@
 .Card {
     text-align: center;
     font-family: Optima, Helvetica, sans-serif;
+    margin-top: 20px;
+    border-color: cadetblue;
+}
 
+.CardTitle {
+    font-size: larger;
 }
 
 .edit {
