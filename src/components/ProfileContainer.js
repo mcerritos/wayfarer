@@ -61,8 +61,6 @@ export default class ProfileContainer extends Component {
             .catch((err) => {console.log(err)})
     };
 
-<<<<<<< HEAD
-=======
     // this calls the show post when the title is clicked on
     // onPostClick = (event) => {
     //     console.log("is this on???")
@@ -78,7 +76,6 @@ export default class ProfileContainer extends Component {
     // }
    
     // this maps the post data to the info in state
->>>>>>> submaster
     renderPostList() {
         let list = this.state.posts.map((post) =>
         <Card className= 'postCard' id={post._id} onClick={this.onPostClick}>
