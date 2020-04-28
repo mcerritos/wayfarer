@@ -40,10 +40,6 @@ class LoginModal extends Component {
                         <ModalHeader toggle={this.props.toggle}>Login</ModalHeader>
 
                         <ModalBody>
-                            <div className="container mt-4">
-                                <div className="row">
-                                <div className="col-md-4 offset-md-4">
-                                    <h4 className="mb-3">Login</h4>
                                     <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="name">Email</label>
@@ -57,15 +53,7 @@ class LoginModal extends Component {
                                     </div>
                                     <button className="btn btn-primary float-right" type="submit" onClick={this.props.toggle}>Login</button>
                                     </form>
-                                </div>
-                                </div>
-                            </div>
                         </ModalBody>
-
-                        <ModalFooter>
-                            <Button color="primary" onClick={this.props.toggle}>Submit</Button>
-                        </ModalFooter>
-
                     </Modal>
                 </div>
             )

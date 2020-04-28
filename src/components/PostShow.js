@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
 import PostModel from '../models/posts'
+import '../styles/posts.css'
 
 class PostShow extends Component {
     state = {
@@ -24,7 +25,7 @@ class PostShow extends Component {
     render() {
         return (
             <div>
-                <Card>
+                <Card className = 'postCard'>
                     <CardBody>
                         <CardTitle> {this.state.title} </CardTitle>
                         <CardText> {this.state.content} </CardText>
