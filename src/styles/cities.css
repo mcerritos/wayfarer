@@ -1,0 +1,12 @@
+.city-col {
+    padding: 1rem;
+}
+
+.CardTitle {
+    font-family: Optima, Helvetica, sans-serif;
+}
+
+.CardCities {
+    font-family: Optima, Helvetica, sans-serif;
+    border-color: cadetblue;
+}

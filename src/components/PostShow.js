@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import PostModel from '../models/posts'
+import '../styles/posts.css'
 
 class PostShow extends Component {
-    return() {
-        render (
+    state = {
+        title: '',
+        author: '',
+        content: '',
+    }
+
+    componentDidMount() {
+        PostModel.getPost(this.props.match.params.id)
+        .then((res) => {
+            console.log(res)
+            this.setState({
+                title : res.data.title,
+                content: res.data.content
+            })
+            console.log("Testing get post info")
+        }).catch((err) => {console.log(err)});
+    }
+
+    render() {
+        return (
             <div>
-                <Card>
+                <Card className = 'postCard'>
                     <CardBody>
-                        <CardTitle> Title </CardTitle>
-                        <CardText> Text </CardText>
+                        <CardTitle> {this.state.title} </CardTitle>
+                        <CardText> {this.state.content} </CardText>
                     </CardBody>
                 </Card>
             </div>

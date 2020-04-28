@@ -6,12 +6,18 @@ import Register from '../components/Register.js';
 import LoginModal from '../components/LoginModal.js';
 import ProfileContainer from '../components/ProfileContainer.js';
 import PostForm from '../components/PostForm.js';
-
+import PostShow from '../components/PostShow.js'
 
 export default (props) => (
     <Switch>
         <Route exact path="/" component={ Landing } />
-        <Route path="/cities" component={ Cities }/>
+        <Route path="/cities" render={ (routeProps) => {
+          return <Cities 
+                  {...routeProps}
+                  currentUser = {props.currentUser}
+                  getCurrentUser={props.getCurrentUser}
+                  /> 
+                } } />
         <Route path="/profile" render={ (routeProps) => {
           return <ProfileContainer 
                   {...routeProps}
@@ -43,6 +49,14 @@ export default (props) => (
       return <PostForm 
                 { ...routeProps }
                 currentUser={props.currentUser}
+              /> 
+    } } />
+
+<Route path="/post/:id" render={ (routeProps) => {
+      return <PostShow 
+                { ...routeProps }
+                currentUser={props.currentUser}
+    
               /> 
     } } />
     

@@ -1,0 +1,31 @@
+.list-img {
+    max-width: 10vw;
+    border-radius: 5px;
+}
+
+.city-list-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    font-family: Optima, Helvetica, sans-serif;
+}
+
+.city-detail-container {
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.detail-img {
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+.posts-container {
+    width: 100%;
+}
