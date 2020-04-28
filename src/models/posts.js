@@ -7,6 +7,11 @@ class PostModel {
       let request = axios.get(`${REACT_APP_API_URL}/${userId}`);
       return request;
     };
+
+    static getPost = (postId) => {
+      let request = axios.get(`${REACT_APP_API_URL}/get/${postId}`);
+      return request;
+    };
   
     static create = (post) => {
         let request = axios.post(REACT_APP_API_URL, post);
