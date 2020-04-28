@@ -3,6 +3,7 @@ import Profile from './Profile.js'
 import UserModel from '../models/user.js'
 import PostModel from '../models/posts.js'
 import PostForm from './PostForm.js';
+import { Redirect, Link } from "react-router-dom";
 
 import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
 
@@ -16,13 +17,14 @@ export default class ProfileContainer extends Component {
             city: "",
             date: Date.now,
             posts: [],
-            id: ""
+            id: "",
+            redirect: null
         };
     };
 
+    // this updates the profile
     updateProfile = (_name, _city) => {
         console.log(_name, _city)
-        console.log("Update profile has been called!")
         let dbid = this.props.getCurrentUser();
         // uses a static method to call the database and change the user info
         UserModel.update(dbid, _name, _city)
@@ -37,8 +39,6 @@ export default class ProfileContainer extends Component {
     componentDidMount() {
 
         let dbid = this.props.getCurrentUser()
-
-
         UserModel.user(dbid).then((res) => {
             this.setState({
                 name : res.data.data.name,
@@ -55,18 +55,33 @@ export default class ProfileContainer extends Component {
 
                 this.setState({
                     posts: res.data
-
                 })
             })
             .catch((err) => {console.log(err)})
     };
 
+    // this calls the show post when the title is clicked on
+    // onPostClick = (event) => {
+    //     console.log("is this on???")
+    //     let dbid = this.props.getCurrentUser()
+    //     // pass props to redirect, but how??
+    //     return(
+    //         <Redirect to={{
+    //             pathname: '/post',
+    //             state: { postId: event.target.id, userId: dbid }
+    //         }}
+    //         />
+    //     )
+    // }
+
+    // this maps the post data to the info in state
     renderPostList() {
         let list = this.state.posts.map((post) =>
-        <Card>
+        <Card id={post._id} onClick={this.onPostClick}>
             <CardBody>
                 <CardTitle> <h4>{post.title}</h4> </CardTitle>
                 <CardText> {post.content} </CardText>
+                <Link to={`/post/${post._id}`}>See More?</Link>
             </CardBody>
         </Card>
         );
@@ -85,20 +100,5 @@ export default class ProfileContainer extends Component {
         )
     }
 }
-
- // // get the user's posts when the posts load
-    // componentDidMount() {
-    //     this.fetchData();
-    // };
-
-    // get the users posts
-    // fetchData = () => {
-    //     PostModel.all().then((res) => {
-    //         this.setState ({
-    //         posts: res.data.posts,
-    //         });
-    //     });
-    // };
-;
 
 
