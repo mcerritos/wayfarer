@@ -58,9 +58,9 @@ class Cities extends Component {
         return (
                 <Row>
                     <Col className="city-col" md="4">
-                        <Card>
+                        <Card className = 'CardCities'>
                             <CardBody>
-                                <CardTitle><h4>Cities</h4></CardTitle>
+                                <CardTitle className='CardTitle'><h4>Cities</h4></CardTitle>
                                 {this.createCityList()}
                             </CardBody>
                         </Card>

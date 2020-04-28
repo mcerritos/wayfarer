@@ -78,15 +78,12 @@ export default class ProfileContainer extends Component {
     // this maps the post data to the info in state
     renderPostList() {
         let list = this.state.posts.map((post) =>
-        
-        <Card className = 'container'>
         <Card className= 'postCard' id={post._id} onClick={this.onPostClick}>
             <CardBody>
                 <CardTitle> <h4>{post.title}</h4> </CardTitle>
                 <CardText> {post.content} </CardText>
                 <Link to={`/post/${post._id}`} className = 'seeMore'>See More?</Link>
             </CardBody>
-        </Card>
         </Card>
         );
 
