@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ------------------------------------------------
+  G L O B A L  S T Y L E S
+---------------------------------------------------*/
+/* basic reset */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+nav {
+  font-family: Optima, Helvetica, sans-serif;
+  
+}
+
+.form-group {
+  font-family: Optima, Helvetica, sans-serif;
+}
+
+.navlink {
+  float: right;
+}
