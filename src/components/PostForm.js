@@ -30,6 +30,8 @@ export default class PostForm extends Component {
             content: this.state.content
         }
 
+        console.log(newPost);
+
         PostModel.create(newPost);
     }
 

@@ -39,9 +39,8 @@ class App extends Component {
             <>
                 <Navigation setCurrentUser={this.setCurrentUser} getCurrentUser={this.getCurrentUser} currentUser={this.state.currentUser}
                  logout={this.logout} />
-                <div className="container">
-                <Routes currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} setCurrentUser={this.setCurrentUser} 
-                />
+                <div className="container-fluid">
+                    <Routes currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} setCurrentUser={this.setCurrentUser}/>
                 </div>
             </>
         );

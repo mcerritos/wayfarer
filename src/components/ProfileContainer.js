@@ -88,7 +88,7 @@ export default class ProfileContainer extends Component {
 
         return list;
     }
-
+    
     render() {
         return (
             <div>
