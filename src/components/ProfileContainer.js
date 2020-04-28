@@ -14,20 +14,22 @@ export default class ProfileContainer extends Component {
         this.state = {
             name: "",
             city: "",
+            date: Date.now,
             posts: [],
             id: ""
         };
     };
 
-    updateProfile = (_name) => {
-        console.log(_name)
+    updateProfile = (_name, _city) => {
+        console.log(_name, _city)
         console.log("Update profile has been called!")
         let dbid = this.props.getCurrentUser();
         // uses a static method to call the database and change the user info
-        UserModel.update(dbid, _name)
+        UserModel.update(dbid, _name, _city)
         .then((res) => {
             this.setState({
                 name : _name,
+                city : _city,
             })
         }).catch((err) => {console.log(err)});
     }
@@ -35,7 +37,6 @@ export default class ProfileContainer extends Component {
     componentDidMount() {
 
         let dbid = this.props.getCurrentUser()
-
 
         UserModel.user(dbid).then((res) => {
             this.setState({
@@ -59,7 +60,9 @@ export default class ProfileContainer extends Component {
     };
 
     renderPostList() {
-        let list = this.state.posts.map((post) =>
+        console.log()
+
+        let list = this.state.posts.map((post, key) =>
         <Card>
             <CardBody>
                 <CardTitle> <h4>{post.title}</h4> </CardTitle>
@@ -74,7 +77,7 @@ export default class ProfileContainer extends Component {
     render() {
         return (
             <div>
-                <Profile name={this.state.name} posts={this.state.posts} 
+                <Profile name={this.state.name} city={this.state.city} date={this.state.date} posts={this.state.posts} 
                 updateProfile={this.updateProfile} />
                 <PostForm userId={this.state.id}/>
                 {this.renderPostList()} 
@@ -82,20 +85,5 @@ export default class ProfileContainer extends Component {
         )
     }
 }
-
- // // get the user's posts when the posts load
-    // componentDidMount() {
-    //     this.fetchData();
-    // };
-
-    // get the users posts
-    // fetchData = () => {
-    //     PostModel.all().then((res) => {
-    //         this.setState ({
-    //         posts: res.data.posts,
-    //         });
-    //     });
-    // };
-;
 
 
