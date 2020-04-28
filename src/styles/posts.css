@@ -1,0 +1,10 @@
+.postCard {
+    border-color: cadetblue;
+    font-family: Optima, Helvetica, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.seemore {
+    text-align: right;
+}

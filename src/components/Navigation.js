@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarToggler} from 'reactstrap';
-
+import '../styles/navigation.css';
 import LoginModal from './LoginModal.js';
 import Register from './Register'
 
@@ -17,30 +17,30 @@ const Navigation = (props) => {
         const toggleRegisterModal = () => setRegisterModal(!registerModal);
 
         return ( 
-            <Navbar color="light" light expand="md">
+            <Navbar className='Navbar'  light expand="md">
                 <NavbarBrand href="/">Wayfarer</NavbarBrand>
                 <NavbarToggler onClick={toggleNav} />
                 <Collapse isOpen={isOpen} navbar>
                 <Nav className="mr-auto" navbar>
                     <NavItem>
-                        <NavLink href="/cities">Cities</NavLink>
+                        <NavLink className='NavLink' href="/cities">Cities</NavLink>
                     </NavItem>
                     { props.currentUser ?
                         <>
                             <NavItem>
-                                <NavLink href="/profile">Profile</NavLink>
+                                <NavLink className='NavLink' href="/profile">Profile</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink onClick={props.logout}>Logout</NavLink>
+                                <NavLink className='NavLink' onClick={props.logout}>Logout</NavLink>
                             </NavItem>
                         </>
                         :
                         <>
                             <NavItem>
-                                <NavLink onClick={toggleRegisterModal} >Register</NavLink>
+                                <NavLink className='NavLink' onClick={toggleRegisterModal} >Register</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink onClick={toggleModal} >Login</NavLink>
+                                <NavLink className='NavLink' onClick={toggleModal} >Login</NavLink>
                             </NavItem>
                         </>
                     }
