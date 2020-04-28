@@ -1,10 +1,15 @@
 import axios from 'axios';
 
-const REACT_APP_API_URL = "http://localhost:3000/api/v1";
+const REACT_APP_API_URL = "http://localhost:3000/api/v1/posts";
 
 class PostModel {
-    static all = () => {
-      let request = axios.get(REACT_APP_API_URL);
+    static all = (userId) => {
+      let request = axios.get(`${REACT_APP_API_URL}/${userId}`);
+      return request;
+    };
+
+    static getPost = (postId) => {
+      let request = axios.get(`${REACT_APP_API_URL}/get/${postId}`);
       return request;
     };
   

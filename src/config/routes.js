@@ -5,8 +5,8 @@ import Cities from '../components/Cities.js';
 import Register from '../components/Register.js';
 import LoginModal from '../components/LoginModal.js';
 import ProfileContainer from '../components/ProfileContainer.js';
-import Post from '../components/Post.js';
-
+import PostForm from '../components/PostForm.js';
+import PostShow from '../components/PostShow.js'
 
 export default (props) => (
     <Switch>
@@ -40,9 +40,17 @@ export default (props) => (
     } } />
 
       <Route path="/posts" render={ (routeProps) => {
-      return <Post 
+      return <PostForm 
                 { ...routeProps }
                 currentUser={props.currentUser}
+              /> 
+    } } />
+
+<Route path="/post/:id" render={ (routeProps) => {
+      return <PostShow 
+                { ...routeProps }
+                currentUser={props.currentUser}
+    
               /> 
     } } />
     
