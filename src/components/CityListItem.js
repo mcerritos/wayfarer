@@ -7,7 +7,7 @@ class CityListItem extends Component {
     render() {
         return (
             <>
-                <Card>
+                <Card className = 'Card'>
                     <CardBody>
                         <Row>
                             <Col className="city-list-col">

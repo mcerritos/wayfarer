@@ -5,7 +5,8 @@ import PostModel from '../models/posts.js'
 import PostForm from './PostForm.js';
 import { Redirect, Link } from "react-router-dom";
 
-import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import '../styles/posts.css'
+import { Card, CardBody, CardText, CardTitle, CardHeader } from 'reactstrap';
 
 
 
@@ -60,13 +61,31 @@ export default class ProfileContainer extends Component {
             .catch((err) => {console.log(err)})
     };
 
+<<<<<<< HEAD
+=======
+    // this calls the show post when the title is clicked on
+    // onPostClick = (event) => {
+    //     console.log("is this on???")
+    //     let dbid = this.props.getCurrentUser()
+    //     // pass props to redirect, but how??
+    //     return(
+    //         <Redirect to={{
+    //             pathname: '/post',
+    //             state: { postId: event.target.id, userId: dbid }
+    //         }}
+    //         />
+    //     )
+    // }
+   
+    // this maps the post data to the info in state
+>>>>>>> submaster
     renderPostList() {
         let list = this.state.posts.map((post) =>
-        <Card id={post._id} onClick={this.onPostClick}>
+        <Card className= 'postCard' id={post._id} onClick={this.onPostClick}>
             <CardBody>
                 <CardTitle> <h4>{post.title}</h4> </CardTitle>
                 <CardText> {post.content} </CardText>
-                <Link to={`/post/${post._id}`}>See More?</Link>
+                <Link to={`/post/${post._id}`} className = 'seeMore'>See More?</Link>
             </CardBody>
         </Card>
         );

@@ -28,6 +28,11 @@ class PostModel {
       let request = axios.put(`${REACT_APP_API_URL}/${post._id}`, post);
       return request;
     };
+
+    static getCityPosts = (cityId) => {
+      let request = axios.get(`${REACT_APP_API_URL}/city/${cityId}`)
+      return request;
+    }
   
   };
   
