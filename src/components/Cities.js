@@ -81,20 +81,25 @@ class Cities extends Component {
     }
 
     createPostList() {
-        let list = this.state.selectedCity.posts.map((post) =>
-        <>
-            <Card id={post._id}>
-                <CardBody>
-                    <CardTitle> <h4>{post.title}</h4> </CardTitle>
-                    <CardText> {post.content} </CardText>
-                    <Link to={`/post/${post._id}`}>See More?</Link>
-                </CardBody>
-            </Card>
-            <br />
-        </>
-        );
 
-        return list;
+        if (this.state.selectedCity.posts == undefined) {
+            return;
+        } else {
+            let list = this.state.selectedCity.posts.map((post) =>
+            <>
+                <Card id={post._id}>
+                    <CardBody>
+                        <CardTitle> <h4>{post.title}</h4> </CardTitle>
+                        <CardText> {post.content} </CardText>
+                        <Link to={`/post/${post._id}`}>See More?</Link>
+                    </CardBody>
+                </Card>
+                <br />
+            </>
+            );
+    
+            return list;
+        }
     }
 
     render() { 
